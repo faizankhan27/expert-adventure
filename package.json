@@ -1,0 +1,9 @@
+{
+  "name": "finish-it-stair-tracker",
+  "version": "1.0.0",
+  "description": "Stair set + jump rope tracker web app (static, no build step)",
+  "private": true,
+  "scripts": {
+    "start": "npx serve ."
+  }
+}

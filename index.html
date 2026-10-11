@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1a0306">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Finish It — Stair Set Tracker</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="fx"></canvas>
+<div id="toast"></div>
+
+<div class="top">
+  <div>
+    <div class="clock" id="clock">--:--:--</div>
+    <div class="date" id="date"></div>
+  </div>
+  <div class="tag">Stair Tracker</div>
+</div>
+
+<div class="hero art" id="hero" ><div class="in">
+  <div class="s">if you started it,</div>
+  <div class="b">finish it<i>.</i></div>
+</div></div>
+<div class="flag"></div>
+
+<div class="card goal">
+  <div><h2>Goal date</h2><div class="gnum" id="gdays">0</div><div class="slab" id="glab">days to go</div></div>
+  <div class="gr"><div class="gt" id="gdate"></div><div class="ssub" id="gtot"></div></div>
+</div>
+
+<div class="card">
+  <h2>Streak</h2>
+  <div class="streak">
+    <div class="flame" id="flame"><svg viewBox="0 0 64 80"><path class="f1" d="M32 2C34 18 52 28 52 50a20 20 0 0 1-40 0c0-12 8-18 12-28 4 6 6 10 8 14 2-12-2-22 0-34z"/><path class="f2" d="M32 40c2 8 10 12 10 22a10 10 0 0 1-20 0c0-6 4-10 6-14 2 4 3 6 4 8 0-6-1-10 0-16z"/></svg></div>
+    <div>
+      <div class="snum" id="snum">0</div>
+      <div class="slab">day streak</div>
+    </div>
+  </div>
+  <div class="ssub" id="ssub"></div>
+  <div class="chips" id="chips"></div>
+</div>
+
+<div class="mid">
+  <div class="ringwrap">
+    <svg viewBox="0 0 120 120"><circle class="ringbg" cx="60" cy="60" r="52"/><circle class="ringfg" id="ring" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg>
+    <div class="ringtxt"><b id="count">0</b><span id="ofgoal">of 30 stair sets</span></div>
+  </div>
+  <div class="stats">
+    <div class="stat red"><div class="n"><span id="ktot">0</span><span class="u"> kcal</span></div><div class="l">Burned today</div></div>
+    <div class="stat"><div class="n"><span id="nrp">0</span><span class="u"> rope sets</span></div><div class="l">= <span id="krp">0</span> kcal</div></div>
+  </div>
+</div>
+
+<div class="tapwrap">
+  <button id="tap">+1 SET<small>20 up + 20 down · <span id="per1">0</span> kcal per set</small></button>
+</div>
+<div class="tapwrap" style="margin-top:12px">
+  <button id="rope">+1 ROPE SET<small><span id="jn">100</span> jumps · <span id="per2">0</span> kcal per set</small></button>
+</div>
+<div style="display:flex;gap:10px"><button class="ghost" id="undoS">Undo stairs</button><button class="ghost" id="undoR">Undo rope</button></div>
+
+<div class="card" style="margin-top:14px">
+  <h2>Last 7 days</h2>
+  <div class="week" id="week"></div>
+  <table id="tbl"></table>
+</div>
+
+<div class="card">
+  <h2>Your numbers</h2>
+  <div class="set">
+    <label>Weight (kg)<input id="wt" type="number" inputmode="decimal" min="30" max="250"></label>
+    <label>Stair height (in)<input id="ht" type="number" inputmode="decimal" min="3" max="12" step="0.5"></label>
+    <label>Goal date<input id="gdateIn" type="date"></label>
+    <label>Streak goal (stair sets)<input id="streakSets" type="number" inputmode="numeric" min="1" max="1000"></label>
+    <label>Jumps per rope set<input id="jumps" type="number" inputmode="numeric" min="10" max="1000" step="10"></label>
+    <label>Pace<select id="eff"><option value="0.7">Easy</option><option value="1">Normal</option><option value="1.4">Brisk</option></select></label>
+  </div>
+  <div class="note" id="calc"></div>
+  <div class="note">A day counts toward your streak when you complete your stair-set goal (30 sets by default). Rope adds to your calories burned but doesn't affect the streak. Skip a day and it resets — today never breaks it until midnight.</div>
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>
